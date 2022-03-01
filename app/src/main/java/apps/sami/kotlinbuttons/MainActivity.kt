@@ -3,7 +3,9 @@ package apps.sami.kotlinbuttons
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioButton
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.customtoast.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +13,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnOrder.setOnClickListener {
+
+            Toast(this).apply {
+                duration = Toast.LENGTH_LONG
+                view = layoutInflater.inflate(R.layout.customtoast, top)
+                show()
+            }
             val checkMeatRadioButtonId = rMeat.checkedRadioButtonId
             val meat = findViewById<RadioButton>(checkMeatRadioButtonId)
             val kg1 = rKg1.isChecked
